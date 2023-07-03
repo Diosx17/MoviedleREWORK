@@ -19,7 +19,14 @@ async function random_film_image(json_file)
             const canvas = document.getElementById('photo');
             const context = canvas.getContext('2d');
 
+<<<<<<< HEAD
             context.drawImage(imgObj, 0, 0);
+=======
+            canvas.width = 350;
+            canvas.height = 525;
+
+            context.drawImage(imgObj, 0, 0, canvas.width, canvas.height);
+>>>>>>> 1d1249ffb18f519f7f25a5de564bffb6f066ec1b
             pixelate();
         };
 
@@ -87,6 +94,15 @@ function guess_mode(guess)
         pixelation = 20;
         guess_input.value = "";
        return true;
+   }
+   else
+   {
+        pixelation -= 5;
+        const canvas = document.getElementById('photo');
+        const context = canvas.getContext('2d');
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.drawImage(imgObj, 0, 0, canvas.width, canvas.height);
+        pixelate();
    }
    guess_input.value = "";
    return false;
